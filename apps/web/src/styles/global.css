@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #171515;
+  --color-paper: #f7f2e8;
+  --color-acid: #dfff00;
+  --color-rose: #ff4f87;
+  --font-display: "Arial Black", "Helvetica Neue", sans-serif;
+  --font-body: "Helvetica Neue", Arial, sans-serif;
+}
+
+@layer base {
+  html { background: var(--color-paper); color: var(--color-ink); font-family: var(--font-body); }
+  body { margin: 0; }
+  a { text-underline-offset: 0.18em; }
+  :focus-visible { outline: 3px solid var(--color-rose); outline-offset: 3px; }
+}

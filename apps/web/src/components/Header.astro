@@ -1,0 +1,17 @@
+---
+import { copy, type Locale } from '../lib/i18n';
+const { locale } = Astro.props as { locale: Locale };
+const t = copy[locale];
+const alternate = locale === 'it' ? 'en' : 'it';
+---
+<header class="border-b-2 border-ink px-5 py-4 md:px-10">
+  <div class="mx-auto flex max-w-7xl items-center justify-between gap-5">
+    <a class="font-display text-3xl tracking-tighter no-underline" href={`/${locale}/`} aria-label="SWIPE home">SWIPE</a>
+    <nav aria-label="Primary navigation" class="flex items-center gap-4 text-sm font-bold md:gap-7">
+      <a href={`/${locale}/manifesto/`}>{t.manifesto}</a>
+      <a href={`/${locale}/journal/`}>{t.journal}</a>
+      <a class="rounded-full bg-acid px-3 py-2 no-underline" href={`/${locale}/support/`}>{t.support}</a>
+      <a href={`/${alternate}/`} lang={alternate} hreflang={alternate}>{t.language}</a>
+    </nav>
+  </div>
+</header>
