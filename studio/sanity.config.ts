@@ -1,7 +1,9 @@
+import { config } from 'dotenv';
 import { defineConfig } from 'sanity';
 import { deskTool } from 'sanity/desk';
 import { schemaTypes } from './schemaTypes';
 
+config({ path: new URL('../.env', import.meta.url) });
 const projectId = process.env.SANITY_STUDIO_PROJECT_ID;
 if (!projectId) throw new Error('Set SANITY_STUDIO_PROJECT_ID to the existing SWIPE Sanity project ID.');
 

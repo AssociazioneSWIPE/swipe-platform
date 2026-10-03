@@ -11,7 +11,7 @@ The canonical public routes are `/it/` and `/en/`; neither language is hidden be
 
 ## Sanity connection
 
-Do not create a Sanity project. Put the current project ID and dataset in `.env` (copy `.env.example`):
+Do not create a Sanity project. Put the current project ID and dataset in the repository-root `.env` (copy `.env.example`). Both Astro and the Studio load this same file:
 
 ```bash
 PUBLIC_SANITY_PROJECT_ID=existing-project-id
