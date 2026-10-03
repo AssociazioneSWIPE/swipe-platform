@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
 import { copy, isLocale, locales } from '../../lib/i18n';
 import { getLatestArticles } from '../../lib/content';
 export function getStaticPaths() { return locales.map((locale) => ({ params: { locale } })); }
@@ -11,5 +12,5 @@ const articles = await getLatestArticles(locale);
 ---
 <BaseLayout locale={locale}>
   <section class="border-b-2 border-ink px-5 py-20 md:px-10 md:py-32"><div class="mx-auto max-w-7xl"><p class="mb-5 font-bold uppercase tracking-widest">Associazione SWIPE · Italia</p><h1 class="max-w-5xl font-display text-5xl leading-none tracking-tighter md:text-8xl">{t.tagline}</h1><a class="mt-10 inline-block rounded-full bg-rose px-6 py-3 font-bold" href={`/${locale}/manifesto/`}>{t.manifesto}</a></div></section>
-  <section class="px-5 py-16 md:px-10"><div class="mx-auto max-w-7xl"><h2 class="mb-8 font-display text-3xl">{t.latest}</h2><div class="grid gap-5 md:grid-cols-3">{articles.map((article) => <article class="border-2 border-ink p-5"><p class="text-sm">{new Intl.DateTimeFormat(locale, { dateStyle: 'long' }).format(new Date(article.publishedAt))}</p><h3 class="mt-8 text-2xl font-bold">{article.title}</h3><p>{article.excerpt}</p><a class="mt-6 inline-block font-bold" href={`/${locale}/journal/${article.slug}/`}>{t.readMore} →</a></article>)}</div></div></section>
+  <section class="px-5 py-16 md:px-10"><div class="mx-auto max-w-7xl"><h2 class="mb-8 font-display text-3xl">{t.latest}</h2><div class="grid gap-5 md:grid-cols-3">{articles.map((article) => <ArticleCard article={article} locale={locale} />)}</div></div></section>
 </BaseLayout>

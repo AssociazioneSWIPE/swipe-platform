@@ -20,10 +20,10 @@ SANITY_STUDIO_PROJECT_ID=existing-project-id
 SANITY_STUDIO_DATASET=production
 ```
 
-Until those values are set, the website renders a small local editorial fallback so development and CI remain deterministic. When connected, the home page queries the three most recently published language-specific `article` documents.
+Until those values are set, the website renders a small local editorial fallback so development and CI remain deterministic. When connected, the home page queries the three most recently published language-specific `article` documents; the Journal listing and static article pages use the same language-aware model.
 
 ## Next increments
 
 1. Import and map the current Sanity content model before changing existing documents.
-2. Replace the journal placeholder with article listing/detail routes.
-3. Add accessible form endpoints and Pagefind after the editorial routes are complete.
+2. Add accessible form endpoints and Pagefind after the editorial routes are complete.
+3. Confirm the existing Sanity model, then add images, authors and translation relationships without modifying editorial data prematurely.

@@ -1,14 +1,14 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { copy, isLocale, locales } from '../../lib/i18n';
-const pages = ['manifesto', 'journal', 'support'] as const;
+const pages = ['manifesto', 'support'] as const;
 export function getStaticPaths() {
-  const staticPages = ['manifesto', 'journal', 'support'];
+  const staticPages = ['manifesto', 'support'];
   return locales.flatMap((locale) => staticPages.map((page) => ({ params: { locale, page } })));
 }
 const { locale: routeLocale, page } = Astro.params;
 if (!isLocale(routeLocale) || !pages.includes(page as typeof pages[number])) return new Response('Not found', { status: 404 });
 const locale = routeLocale; const t = copy[locale];
-const content = locale === 'it' ? { manifesto: 'Crediamo in diritti, dignità e autodeterminazione.', journal: 'Storie, analisi e risorse dalla comunità.', support: 'Sostieni il nostro lavoro e la nostra comunità.' } : { manifesto: 'We believe in rights, dignity and self-determination.', journal: 'Stories, analysis and resources from the community.', support: 'Support our work and our community.' };
+const content = locale === 'it' ? { manifesto: 'Crediamo in diritti, dignità e autodeterminazione.', support: 'Sostieni il nostro lavoro e la nostra comunità.' } : { manifesto: 'We believe in rights, dignity and self-determination.', support: 'Support our work and our community.' };
 ---
 <BaseLayout locale={locale} title={t[page as keyof typeof t]}><section class="min-h-[60vh] px-5 py-20 md:px-10"><div class="mx-auto max-w-4xl"><p class="font-bold uppercase tracking-widest">SWIPE</p><h1 class="mt-5 font-display text-5xl tracking-tighter md:text-7xl">{t[page as keyof typeof t]}</h1><p class="mt-8 max-w-2xl text-xl leading-relaxed">{content[page as keyof typeof content]}</p></div></section></BaseLayout>

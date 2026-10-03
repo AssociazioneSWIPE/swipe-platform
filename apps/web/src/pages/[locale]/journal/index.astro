@@ -1,0 +1,14 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ArticleCard from '../../../components/ArticleCard.astro';
+import { getArticles } from '../../../lib/content';
+import { copy, isLocale, locales } from '../../../lib/i18n';
+export function getStaticPaths() { return locales.map((locale) => ({ params: { locale } })); }
+const { locale: routeLocale } = Astro.params;
+if (!isLocale(routeLocale)) return new Response('Not found', { status: 404 });
+const locale = routeLocale;
+const articles = await getArticles(locale);
+---
+<BaseLayout locale={locale} title={copy[locale].journal}>
+  <section class="px-5 py-16 md:px-10 md:py-24"><div class="mx-auto max-w-7xl"><p class="font-bold uppercase tracking-widest">SWIPE</p><h1 class="mt-5 font-display text-5xl tracking-tighter md:text-7xl">{copy[locale].journal}</h1><div class="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-3">{articles.map((article) => <ArticleCard article={article} locale={locale} />)}</div></div></section>
+</BaseLayout>

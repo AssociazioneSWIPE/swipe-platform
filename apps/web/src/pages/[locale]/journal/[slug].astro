@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { getArticle, getArticles } from '../../../lib/content';
+import { isLocale, locales } from '../../../lib/i18n';
+export async function getStaticPaths() {
+  const paths = await Promise.all(
+    locales.map(async (locale) =>
+      (await getArticles(locale)).map((article) => ({ params: { locale, slug: article.slug } })),
+    ),
+  );
+  return paths.flat();
+}
+const { locale: routeLocale, slug } = Astro.params;
+if (!isLocale(routeLocale) || !slug) return new Response('Not found', { status: 404 });
+const locale = routeLocale;
+const article = await getArticle(locale, slug);
+if (!article) return new Response('Not found', { status: 404 });
+const date = new Intl.DateTimeFormat(locale, { dateStyle: 'long' }).format(new Date(article.publishedAt));
+const paragraphs = article.body?.map((block) => block.children?.map((child) => child.text ?? '').join('') ?? '').filter(Boolean) ?? [article.excerpt];
+---
+<BaseLayout locale={locale} title={article.title}>
+  <article class="px-5 py-16 md:px-10 md:py-24"><div class="mx-auto max-w-3xl"><a class="font-bold" href={`/${locale}/journal/`}>← Journal</a><p class="mt-12 text-sm">{date}</p><h1 class="mt-4 font-display text-5xl tracking-tighter md:text-7xl">{article.title}</h1><p class="mt-8 text-xl leading-relaxed">{article.excerpt}</p><div class="mt-12 space-y-6 text-lg leading-relaxed">{paragraphs.map((paragraph) => <p>{paragraph}</p>)}</div></div></article>
+</BaseLayout>
