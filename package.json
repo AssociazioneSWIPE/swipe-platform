@@ -2,7 +2,7 @@
   "name": "swipe-platform",
   "private": true,
   "version": "0.1.0",
-  "packageManager": "pnpm@10.14.0",
+  "packageManager": "pnpm@11.25.0",
   "scripts": {
     "build": "pnpm --filter @swipe/web build",
     "check": "pnpm --filter @swipe/web check",

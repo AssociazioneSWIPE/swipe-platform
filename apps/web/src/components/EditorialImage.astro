@@ -1,0 +1,13 @@
+---
+import imageUrlBuilder from '@sanity/image-url';
+import type { EditorialImage } from '../lib/content';
+const { value, width = 1200 } = Astro.props as { value?: EditorialImage; width?: number };
+const projectId = import.meta.env.PUBLIC_SANITY_PROJECT_ID;
+const builder = projectId ? imageUrlBuilder({ projectId, dataset: import.meta.env.PUBLIC_SANITY_DATASET || 'production' }) : null;
+const source = value?.asset && builder ? builder.image(value) : null;
+---
+{source && value && <figure class="my-8">
+  <img src={source.width(width).auto('format').url()} srcset={[400, 800, 1200].map((size) => source.width(size).auto('format').url() + ' ' + size + 'w').join(', ')} sizes="(max-width: 768px) 100vw, 768px" alt={value.alt} loading="lazy" decoding="async" class="h-auto w-full" />
+  {(value.caption || value.credit) && <figcaption class="mt-2 text-sm">{value.caption}{value.credit && ' © ' + value.credit}</figcaption>}
+</figure>}
+

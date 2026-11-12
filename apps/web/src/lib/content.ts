@@ -2,8 +2,13 @@ import { createClient } from '@sanity/client';
 import type { Locale } from './i18n';
 
 export interface PortableTextBlock {
+  _key?: string;
   _type: 'block';
-  children?: Array<{ _type: 'span'; text?: string }>;
+  style?: string;
+  listItem?: string;
+  level?: number;
+  markDefs?: Array<{ _key: string; _type: string; href?: string }>;
+  children?: Array<{ _key?: string; _type: 'span'; text?: string; marks?: string[] }>;
 }
 
 export interface Article {
@@ -12,6 +17,28 @@ export interface Article {
   excerpt: string;
   publishedAt: string;
   body?: PortableTextBlock[];
+  mainImage?: EditorialImage;
+  author?: { name: string };
+  categories?: Array<{ _id: string; title: string }>;
+  translation?: { language: Locale; slug: string };
+  seo?: { title?: string; description?: string };
+}
+
+export interface EditorialImage {
+  asset?: { _ref: string };
+  alt: string;
+  caption?: string;
+  credit?: string;
+  crop?: { top: number; bottom: number; left: number; right: number };
+  hotspot?: { x: number; y: number; width: number; height: number };
+}
+export interface PageContent {
+  title: string; intro?: string; image?: EditorialImage; body?: PortableTextBlock[];
+  seo?: { title?: string; description?: string };
+}
+export interface SiteSettings {
+  siteName?: string; description?: string; footerText?: string;
+  navigation?: Array<{ _key: string; label: string; route: string }>;
 }
 
 const fallbackArticles: Record<Locale, Article[]> = {
@@ -27,7 +54,29 @@ const fallbackArticles: Record<Locale, Article[]> = {
 
 const projectId = import.meta.env.PUBLIC_SANITY_PROJECT_ID;
 const dataset = import.meta.env.PUBLIC_SANITY_DATASET || 'production';
-const client = projectId ? createClient({ projectId, dataset, apiVersion: import.meta.env.PUBLIC_SANITY_API_VERSION || '2026-08-15', useCdn: true }) : null;
+const client = projectId ? createClient({ projectId, dataset, apiVersion: import.meta.env.PUBLIC_SANITY_API_VERSION || '2025-02-19', useCdn: false, perspective: 'published' }) : null;
+
+async function fetchContent<T>(query: string, params: Record<string, string>): Promise<T> {
+  if (!client) throw new Error('Sanity is not configured.');
+  try { return await client.fetch<T>(query, params); }
+  catch (error) { throw new Error('Sanity content could not be loaded. Check the project, dataset and network before rebuilding.', { cause: error }); }
+}
+
+export async function getPage(locale: Locale, route: string): Promise<PageContent | null> {
+  if (!client) return null;
+  return fetchContent<PageContent | null>(
+    '*[_type == "page" && language == $language && route == $route][0]{title, intro, image, body, seo}',
+    { language: locale, route },
+  );
+}
+
+export async function getSettings(locale: Locale): Promise<SiteSettings | null> {
+  if (!client) return null;
+  return fetchContent<SiteSettings | null>(
+    '*[_id == $id][0]{siteName, description, footerText, navigation[]{_key, label, route}}',
+    { id: 'siteSettings-' + locale },
+  );
+}
 
 export async function getLatestArticles(locale: Locale): Promise<Article[]> {
   return (await getArticles(locale)).slice(0, 3);
@@ -35,14 +84,12 @@ export async function getLatestArticles(locale: Locale): Promise<Article[]> {
 
 export async function getArticles(locale: Locale): Promise<Article[]> {
   if (!client) return fallbackArticles[locale];
-  const query = `*[_type == "article" && language == $language && defined(slug.current)] | order(publishedAt desc)[0...3] { "slug": slug.current, title, excerpt, publishedAt }`;
-  try { return await client.fetch<Article[]>(query, { language: locale }); }
-  catch { return fallbackArticles[locale]; }
+  const query = `*[_type == "article" && language == $language && defined(slug.current) && defined(publishedAt) && dateTime(publishedAt) <= dateTime(now())] | order(publishedAt desc, _id asc) { "slug": slug.current, title, excerpt, publishedAt, mainImage, author->{name}, categories[]->{_id, title} }`;
+  return fetchContent<Article[]>(query, { language: locale });
 }
 
 export async function getArticle(locale: Locale, slug: string): Promise<Article | undefined> {
   if (!client) return fallbackArticles[locale].find((article) => article.slug === slug);
-  const query = `*[_type == "article" && language == $language && slug.current == $slug][0] { "slug": slug.current, title, excerpt, publishedAt, body }`;
-  try { return await client.fetch<Article | undefined>(query, { language: locale, slug }); }
-  catch { return fallbackArticles[locale].find((article) => article.slug === slug); }
+  const query = `*[_type == "article" && language == $language && slug.current == $slug && defined(publishedAt) && dateTime(publishedAt) <= dateTime(now())][0] { "slug": slug.current, title, excerpt, publishedAt, body, mainImage, author->{name}, categories[]->{_id, title}, translation->{ "slug": select(defined(publishedAt) && dateTime(publishedAt) <= dateTime(now()) => slug.current), language }, seo }`;
+  return fetchContent<Article | undefined>(query, { language: locale, slug });
 }

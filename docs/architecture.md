@@ -7,7 +7,7 @@
 
 ## Localisation
 
-The canonical public routes are `/it/` and `/en/`; neither language is hidden behind an unprefixed URL. Content documents use a required `language` field. Translation relationships can be added later once the existing editorial model is confirmed.
+The canonical public routes are `/it/` and `/en/`. Pages, articles and categories use a required `language` field. Article translation references connect their language-specific slugs; authors are shared. Settings use one fixed document per language, `siteSettings-it` and `siteSettings-en`.
 
 ## Sanity connection
 
@@ -20,10 +20,18 @@ SANITY_STUDIO_PROJECT_ID=existing-project-id
 SANITY_STUDIO_DATASET=production
 ```
 
-Until those values are set, the website renders a small local editorial fallback so development and CI remain deterministic. When connected, the home page queries the three most recently published language-specific `article` documents; the Journal listing and static article pages use the same language-aware model.
+Without a project ID, the website renders local sample articles. With a configured project, it queries published content only, excludes articles dated in the future, and fails on query errors. The home page shows three articles; the Journal includes all eligible articles. The API uses a pinned version and bypasses the CDN during builds to retrieve freshly published content.
+
+## Editorial model
+
+Pages use a fixed route choice (home, manifesto, support), unique per language, with title, introduction, rich text, image and search metadata. Settings supply navigation, site name, description and footer. Articles add optional author, categories, cover image, search metadata and a translation reference. All public image fields require alternative text and support credits, captions and hotspots.
+
+Rich text is rendered with Portable Text's HTML renderer, preserving headings, marks, links and nested lists. Images use Sanity's URL builder for responsive sizes and crop/hotspot support. No React island is needed for the public editorial pages.
+
+The Studio structure groups content by language and exposes settings as fixed documents. Language-specific creation templates set the language automatically. See [the editor guide](editor-guide.md) for the publishing workflow.
 
 ## Next increments
 
-1. Import and map the current Sanity content model before changing existing documents.
-2. Add accessible form endpoints and Pagefind after the editorial routes are complete.
-3. Confirm the existing Sanity model, then add images, authors and translation relationships without modifying editorial data prematurely.
+1. Enter and approve real SWIPE content and brand assets in the existing empty dataset.
+2. Set up hosted Studio access, a production website deployment, and publish-triggered rebuilds.
+3. Add accessible form endpoints, Pagefind and live draft preview.

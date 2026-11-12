@@ -17,4 +17,4 @@ cp .env.example .env
 pnpm dev
 ```
 
-See [the architecture notes](docs/architecture.md) for environment configuration and the next implementation increments.
+Run `pnpm studio` in a second terminal to open the editorial Studio. See [the editor guide](docs/editor-guide.md) for creating bilingual content, and [the architecture notes](docs/architecture.md) for environment configuration and implementation details.

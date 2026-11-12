@@ -13,9 +13,15 @@ importers:
       '@astrojs/sitemap':
         specifier: ^3.4.1
         version: 3.7.3
+      '@portabletext/to-html':
+        specifier: ^2.0.0
+        version: 2.0.17
       '@sanity/client':
         specifier: ^7.11.2
         version: 7.26.2
+      '@sanity/image-url':
+        specifier: ^1.2.0
+        version: 1.2.0
       astro:
         specifier: ^5.13.0
         version: 5.18.2(@types/node@26.2.0)(jiti@2.7.0)(lightningcss@1.32.0)(rollup@4.62.4)(supports-color@8.1.1)(typescript@5.9.3)(yaml@2.9.0)
