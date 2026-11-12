@@ -13,6 +13,12 @@ importers:
       '@astrojs/sitemap':
         specifier: ^3.4.1
         version: 3.7.3
+      '@fontsource-variable/rubik':
+        specifier: ^5.0.0
+        version: 5.3.0
+      '@fontsource/noticia-text':
+        specifier: ^5.0.0
+        version: 5.3.0
       '@portabletext/to-html':
         specifier: ^2.0.0
         version: 2.0.17
@@ -1374,6 +1380,12 @@ packages:
 
   '@floating-ui/utils@0.2.12':
     resolution: {integrity: sha512-HpCo8tmWzLVad5s2d19EhAz5zqrrQ6s69qd6moPMQvkOuSwDT1YgRfWSVuc4ennqrgv3OHppiOGMQ7oC13yIww==}
+
+  '@fontsource-variable/rubik@5.3.0':
+    resolution: {integrity: sha512-yQUf8qle24MJYA+EuauyF+cqjjN6I715nGjitt3sGmwZA0XfA4fWJcLq1C/diREZl4Qzn1E80nLMc0ipC/a4Lg==}
+
+  '@fontsource/noticia-text@5.3.0':
+    resolution: {integrity: sha512-xjtgOXvGVs2veS9glvb+NSlJBYfjpddt4FL6I3axVHnY+3HznRyjpRaLzyYFqsvVxVF75cBAVvWOH76vd8ttJw==}
 
   '@img/colour@1.1.0':
     resolution: {integrity: sha512-Td76q7j57o/tLVdgS746cYARfSyxk8iEfRxewL9h4OMzYhbW4TAcppl0mT4eyqXddh6L/jwoM75mo7ixa/pCeQ==}
@@ -7722,6 +7734,10 @@ snapshots:
       react-dom: 18.3.1(react@18.3.1)
 
   '@floating-ui/utils@0.2.12': {}
+
+  '@fontsource-variable/rubik@5.3.0': {}
+
+  '@fontsource/noticia-text@5.3.0': {}
 
   '@img/colour@1.1.0':
     optional: true

@@ -33,7 +33,9 @@ Add navigation items, choose their destinations, and drag them into order. Desti
 
 ## Pages
 
-Under **Italiano / English → Pages**, create Home, Manifesto and Support. Choose the page destination, enter its title and introduction, and optionally add an image, formatted body and search metadata. Validation prevents a second page at the same destination in the same language.
+Under **Italiano / English → Pages**, create Home, About, Manifesto, Support, Resources, Guides, Press, Podcasts, Activities, Research and Contact as needed. Choose the page destination, enter its title and introduction, and optionally add an image, formatted body and search metadata. Validation prevents a second page at the same destination in the same language.
+
+Redeploy the hosted Studio after this schema update to see the extra destinations. The added archive sections are editable landing pages at this stage; structured entries and activity-category pages are a later increment. For Guides, use the image field for the actual cover and link to the existing SW+S request landing page. For Research, add the approved volunteer-capacity explanation and verified project history.
 
 The page title is its visible heading; search metadata can override the browser title and description. Existing introductory placeholder text remains visible until the corresponding page is published.
 

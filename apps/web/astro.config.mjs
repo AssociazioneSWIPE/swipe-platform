@@ -4,7 +4,7 @@ import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-  site: 'https://swipe-italia.org',
+  site: 'https://associazioneswipe.it',
   integrations: [sitemap()],
   vite: {
     envDir: fileURLToPath(new URL('../..', import.meta.url)),

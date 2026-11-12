@@ -1,12 +1,13 @@
 import { defineField, defineType } from 'sanity';
 import { languageField } from './shared';
+import { pageRoutes } from '../../packages/config/routes';
 
 export const page = defineType({
   name: 'page', type: 'document', title: 'Pages',
   fields: [
     languageField,
     defineField({ name: 'route', type: 'string', title: 'Website page',
-      options: { list: ['home', 'manifesto', 'support'], layout: 'radio' },
+      options: { list: [...pageRoutes] },
       validation: (rule) => rule.required().custom(async (value, context) => {
         if (!value || !context.document?.language) return true;
         const id = context.document._id.replace(/^drafts\./, '');

@@ -3,6 +3,7 @@ import '../styles/global.css';
 import Header from '../components/Header.astro';
 import { copy, type Locale } from '../lib/i18n';
 import { getSettings } from '../lib/content';
+import { sections, instagramUrl, guideUrl } from '../lib/site';
 const { locale, title, description, alternatePath } = Astro.props as { locale: Locale; title?: string; description?: string; alternatePath?: string };
 const t = copy[locale];
 const settings = await getSettings(locale);
@@ -10,5 +11,21 @@ const settings = await getSettings(locale);
 <!doctype html>
 <html lang={locale}>
   <head><meta charset="utf-8" /><meta name="viewport" content="width=device-width" /><meta name="description" content={description || settings?.description || t.tagline} /><title>{title ? `${title} — ${settings?.siteName || 'SWIPE'}` : settings?.siteName || 'SWIPE'}</title></head>
-  <body><a class="sr-only focus:not-sr-only" href="#main">{locale === 'it' ? 'Vai al contenuto' : 'Skip to content'}</a><Header locale={locale} settings={settings} alternatePath={alternatePath} /><main id="main"><slot /></main><footer class="border-t-2 border-ink px-5 py-8 md:px-10"><p class="mx-auto max-w-7xl text-sm">© {new Date().getFullYear()} {settings?.footerText || 'Associazione SWIPE · ' + t.tagline}</p></footer></body>
+  <body><a class="skip-link" href="#main">{locale === 'it' ? 'Vai al contenuto' : 'Skip to content'}</a><Header locale={locale} settings={settings} alternatePath={alternatePath} /><main id="main"><slot /></main>
+    <footer class="site-footer"><div class="wrap">
+      <div class="footer-grid"><div><a href={`/${locale}/`}><img src="/brand/swipe-logo-white.png" width="980" height="454" alt="SWIPE" /></a><p>{t.tagline}</p></div><nav aria-label="SWIPE">{(['about', 'manifesto', 'events', 'research'] as const).map((route) => <a href={`/${locale}/${route}/`}>{sections[locale][route][0]}</a>)}</nav><nav aria-label={sections[locale].resources[0]}><a href={`/${locale}/resources/`}>{sections[locale].resources[0]}</a><a href={`/${locale}/journal/`}>Journal</a><a href={guideUrl}>SW+S</a><a href={`/${locale}/contact/`}>{sections[locale].contact[0]}</a><a href={instagramUrl}>Instagram ↗</a></nav></div>
+      <p class="footer-bottom">© {new Date().getFullYear()} {settings?.footerText || 'Associazione SWIPE'} · Sex work is work.</p>
+    </div></footer>
+  </body>
 </html>
+<style>
+  .skip-link { position: absolute; left: 1rem; top: -100px; z-index: 50; background: white; color: black; padding: 1rem; } .skip-link:focus { top: 1rem; }
+  .site-footer { color: white; background: var(--color-ink); padding-block: 3rem 1.5rem; }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; padding-bottom: 3rem; }
+  .footer-grid img { width: 190px; height: auto; }
+  .footer-grid p { max-width: 300px; font-size: .9rem; line-height: 1.7; margin-top: 1rem; }
+  .footer-grid nav { display: flex; flex-direction: column; gap: .9rem; padding-top: 1.25rem; font-size: .85rem; }
+  .footer-grid nav a { text-decoration: none; } .footer-grid nav a:hover { text-decoration: underline; }
+  .footer-bottom { font-size: .7rem; border-top: 1px solid #ffffff40; padding-top: 1.5rem; }
+  @media (max-width: 650px) { .footer-grid { grid-template-columns: 1fr 1fr; gap: 1rem 2rem; } .footer-grid > div { grid-column: 1 / -1; } }
+</style>

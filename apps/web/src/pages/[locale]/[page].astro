@@ -3,16 +3,38 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import RichText from '../../components/RichText.astro';
 import EditorialImage from '../../components/EditorialImage.astro';
 import { getPage } from '../../lib/content';
-import { copy, isLocale, locales } from '../../lib/i18n';
-const pages = ['manifesto', 'support'] as const;
+import { isLocale, locales } from '../../lib/i18n';
+import { sections, resourceSections, guideUrl, instagramUrl, type Section } from '../../lib/site';
+import { pageRoutes } from '../../../../../packages/config/routes';
 export function getStaticPaths() {
-  const staticPages = ['manifesto', 'support'];
-  return locales.flatMap((locale) => staticPages.map((page) => ({ params: { locale, page } })));
+  return locales.flatMap((locale) => pageRoutes.filter((page) => page !== 'home').map((page) => ({ params: { locale, page } })));
 }
 const { locale: routeLocale, page } = Astro.params;
-if (!isLocale(routeLocale) || !pages.includes(page as typeof pages[number])) return new Response('Not found', { status: 404 });
-const locale = routeLocale; const t = copy[locale];
-const pageContent = await getPage(locale, page!);
-const content = locale === 'it' ? { manifesto: 'Crediamo in diritti, dignità e autodeterminazione.', support: 'Sostieni il nostro lavoro e la nostra comunità.' } : { manifesto: 'We believe in rights, dignity and self-determination.', support: 'Support our work and our community.' };
+if (!isLocale(routeLocale) || !page || !pageRoutes.includes(page as typeof pageRoutes[number])) return new Response('Not found', { status: 404 });
+const locale = routeLocale;
+const route = page as Section;
+const pageContent = await getPage(locale, route);
+const [title, intro] = sections[locale][route];
 ---
-<BaseLayout locale={locale} title={pageContent?.seo?.title || pageContent?.title || t[page as keyof typeof t]} description={pageContent?.seo?.description} alternatePath={`/${locale === 'it' ? 'en' : 'it'}/${page}/`}><section class="min-h-[60vh] px-5 py-20 md:px-10"><div class="mx-auto max-w-4xl"><p class="font-bold uppercase tracking-widest">SWIPE</p><h1 class="mt-5 font-display text-5xl tracking-tighter md:text-7xl">{pageContent?.title || t[page as keyof typeof t]}</h1><p class="mt-8 max-w-2xl text-xl leading-relaxed">{pageContent?.intro || content[page as keyof typeof content]}</p><EditorialImage value={pageContent?.image} /><div class="mt-12"><RichText value={pageContent?.body} /></div></div></section></BaseLayout>
+<BaseLayout locale={locale} title={pageContent?.seo?.title || pageContent?.title || title} description={pageContent?.seo?.description || pageContent?.intro || intro} alternatePath={`/${locale === 'it' ? 'en' : 'it'}/${page}/`}>
+  <section class="page-heading"><div class="wrap"><p class="eyebrow">SWIPE / {title}</p><h1>{pageContent?.title || title}</h1><p class="editorial page-intro">{pageContent?.intro || intro}</p></div></section>
+  <section class="section-space"><div class="wrap page-body">
+    <EditorialImage value={pageContent?.image} /><RichText value={pageContent?.body} />
+    {route === 'resources' && <div class="resource-list">{resourceSections.map((section) => <a href={`/${locale}/${section}/`}><h2>{sections[locale][section][0]} <span aria-hidden="true">↗</span></h2><p>{sections[locale][section][1]}</p></a>)}</div>}
+    {route === 'guides' && <div class="guide-entry"><p class="eyebrow">SW+S</p><h2>Sex Work Più Sicuro</h2><p>{locale === 'it' ? 'Scopri la guida e come richiedere una copia.' : 'Discover the guide and how to request a copy.'}</p><a class="button" href={guideUrl}>{locale === 'it' ? 'Vai alla pagina della guida' : 'Visit the guide’s website'} <span aria-hidden="true">↗</span></a></div>}
+    {route === 'support' && <a class="button button-yellow" href="https://www.paypal.com/donate/?hosted_button_id=4WJG759DXNHS4">{locale === 'it' ? 'Fai una donazione' : 'Make a donation'} <span aria-hidden="true">↗</span></a>}
+    {route === 'contact' && <a class="button" href={instagramUrl}>Instagram <span aria-hidden="true">↗</span></a>}
+    {!pageContent?.body?.length && ['press', 'podcasts', 'events', 'research'].includes(route) && <p class="empty-note">{locale === 'it' ? 'Questa sezione si sta preparando. Torna a trovarci.' : 'This section is being prepared. Check back soon.'}</p>}
+  </div></section>
+</BaseLayout>
+<style>
+  .page-heading { background: var(--color-red); color: white; padding-block: clamp(3rem, 7vw, 6rem); }
+  .page-heading .eyebrow, .page-intro { color: var(--color-ink); }
+  h1 { font-size: clamp(2.7rem, 6vw, 5rem); line-height: 1.1; letter-spacing: -.025em; margin-block: 1.5rem; }
+  .page-intro { max-width: 760px; font-size: clamp(1.2rem, 2vw, 1.7rem); line-height: 1.5; }
+  .page-body { max-width: 900px; min-height: 150px; }
+  .resource-list { display: grid; gap: 2rem; } .resource-list > a { padding-block: 1.5rem; border-top: 1px solid; text-decoration: none; }
+  h2 { font-size: 1.8rem; margin-bottom: 1rem; } .resource-list > a:hover h2 { text-decoration: underline; }
+  .guide-entry p, .resource-list p { line-height: 1.7; margin-bottom: 1.5rem; }
+  .empty-note { font-size: 1rem; line-height: 1.7; } .guide-entry { border-top: 1px solid; padding-top: 2rem; }
+</style>

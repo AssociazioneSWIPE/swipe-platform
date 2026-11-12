@@ -1,17 +1,32 @@
 @import "tailwindcss";
+@import "@fontsource-variable/rubik";
+@import "@fontsource/noticia-text/400.css";
 
 @theme {
-  --color-ink: #171515;
-  --color-paper: #f7f2e8;
-  --color-acid: #dfff00;
-  --color-rose: #ff4f87;
-  --font-display: "Arial Black", "Helvetica Neue", sans-serif;
-  --font-body: "Helvetica Neue", Arial, sans-serif;
+  --color-ink: #000000;
+  --color-paper: #ffffff;
+  --color-red: #ed1c24;
+  --color-acid: #fec60d;
+  --color-rose: #f5598b;
+  --font-display: "Rubik Variable", Arial, sans-serif;
+  --font-body: "Rubik Variable", Arial, sans-serif;
+  --font-editorial: "Noticia Text", Georgia, serif;
 }
 
 @layer base {
   html { background: var(--color-paper); color: var(--color-ink); font-family: var(--font-body); }
   body { margin: 0; }
   a { text-underline-offset: 0.18em; }
-  :focus-visible { outline: 3px solid var(--color-rose); outline-offset: 3px; }
+  :focus-visible { outline: 3px solid currentColor; outline-offset: 5px; }
+  h1, h2, h3 { font-weight: 600; }
+  button, summary, a { -webkit-tap-highlight-color: transparent; }
 }
+
+.wrap { width: min(100% - 3rem, 1240px); margin-inline: auto; }
+.eyebrow { font-size: .72rem; font-weight: 600; line-height: 1.6; letter-spacing: .12em; text-transform: uppercase; }
+.button { display: inline-flex; align-items: center; justify-content: center; gap: 1rem; min-height: 48px; padding: .85rem 1.45rem; border: 1px solid currentColor; border-radius: 100px; font-size: .9rem; font-weight: 600; text-decoration: none; }
+.button:hover { text-decoration: underline; text-underline-offset: .25em; }
+.button-yellow { background: var(--color-acid); color: var(--color-ink); border-color: var(--color-acid); }
+.editorial { font-family: var(--font-editorial); }
+.section-space { padding-block: clamp(3.5rem, 8vw, 7rem); }
+@media (max-width: 600px) { .wrap { width: calc(100% - 2rem); } }

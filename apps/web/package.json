@@ -10,6 +10,8 @@
     "check": "astro check"
   },
   "dependencies": {
+    "@fontsource-variable/rubik": "^5.0.0",
+    "@fontsource/noticia-text": "^5.0.0",
     "@portabletext/to-html": "^2.0.0",
     "@sanity/image-url": "^1.2.0",
     "@astrojs/sitemap": "^3.4.1",
