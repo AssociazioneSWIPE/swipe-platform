@@ -8,7 +8,22 @@ Node.js and pnpm must be installed on your computer first. Use Node.js 24 LTS an
 
 The root `.env` must contain both `PUBLIC_SANITY_PROJECT_ID` and `SANITY_STUDIO_PROJECT_ID`, set to the same existing project ID. Both dataset variables should be `production`. See `.env.example`. Never commit `.env`.
 
-This change builds the local Studio; it does not deploy a hosted Studio or create content in Sanity.
+## Host the Studio on Sanity
+
+Sanity offers free Studio hosting on a `*.sanity.studio` address. This hosts the content editor; the public Astro website is deployed separately.
+
+From the repository root:
+
+```bash
+pnpm studio:login
+pnpm studio:deploy
+```
+
+Sign in using the account that owns SWIPE project `r41fytlt`, with the same sign-in provider you used in Sanity Manage. The configured hostname is `associazioneswipe`; the intended address is `https://associazioneswipe.sanity.studio`. The deploy command confirms the actual address on success. If the hostname is unavailable, set `SANITY_STUDIO_HOST` in the root `.env` to another available name and rerun.
+
+The deployment builds and uploads this repository's Studio and schema. `--schema-required` makes schema errors stop deployment. Subsequent schema/interface changes require redeploying with the same command. Editing ordinary pages and articles then happens in the hosted Studio, without a terminal or running local server.
+
+Editors must sign in and have project access. Deploying the Studio does not create or publish editorial documents. See [Sanity's hosting documentation](https://www.sanity.io/docs/studio/deployment).
 
 ## Site settings
 
