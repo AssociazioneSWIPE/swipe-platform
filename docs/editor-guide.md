@@ -47,7 +47,11 @@ Only published entries from the selected language and section appear in the corr
 
 ## Activity categories
 
-Use **Activity categories** to create a page about a type of gathering, for example aperitivi. Add a title, slug, summary, formatted description and a photo gallery with approved credits and alternative text. The section is an archive of activities, not a calendar; no event date is required.
+Use **Activity categories** to create a page about a type of gathering, for example aperitivi. Add a title, slug, summary, formatted description and a photo gallery with approved credits and alternative text.
+
+Under **Dated gatherings**, add individual editions with their title and date. An end date and public venue/location are optional. Leave the list empty if the category has no dates yet. A multi-day edition must end on or after its start date. These are calendar dates without a time of day, so they keep the entered day regardless of the reader's timezone.
+
+Dates appear on the activities index and the detail page, most recent start date first, formatted in the page's language. Old activity documents without dates remain valid. This adds dated entries without changing the section into a calendar. Date lists update when the site is rebuilt.
 
 Publishing creates an entry in the activities index and a detail URL such as `/it/events/aperitivi/` after the next website build. Create the English version separately and link translations in both directions. Without a linked translation, the language switch goes to the other language's activities index.
 

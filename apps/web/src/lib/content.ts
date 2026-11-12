@@ -60,10 +60,19 @@ export interface Activity {
   title: string;
   slug: string;
   summary: string;
+  occurrences?: ActivityOccurrence[];
   body?: PortableTextBlock[];
   gallery?: EditorialImage[];
   translation?: { language: Locale; slug: string };
   seo?: { title?: string; description?: string };
+}
+
+export interface ActivityOccurrence {
+  _key: string;
+  title: string;
+  startDate: string;
+  endDate?: string;
+  location?: string;
 }
 
 const fallbackArticles: Record<Locale, Article[]> = {
@@ -108,7 +117,7 @@ export async function getResources(locale: Locale, kind: ArchiveKind): Promise<R
 export async function getActivities(locale: Locale): Promise<Activity[]> {
   if (!client) return [];
   return fetchContent<Activity[]>(
-    '*[_type == "activity" && language == $language && defined(slug.current)] | order(title asc, _id asc){_id, title, "slug": slug.current, summary, "gallery": gallery[0...1]}',
+    '*[_type == "activity" && language == $language && defined(slug.current)] | order(title asc, _id asc){_id, title, "slug": slug.current, summary, occurrences[]{_key, title, startDate, endDate, location}, "gallery": gallery[0...1]}',
     { language: locale },
   );
 }
@@ -116,7 +125,7 @@ export async function getActivities(locale: Locale): Promise<Activity[]> {
 export async function getActivity(locale: Locale, slug: string): Promise<Activity | null> {
   if (!client) return null;
   return fetchContent<Activity | null>(
-    '*[_type == "activity" && language == $language && slug.current == $slug][0]{_id, title, "slug": slug.current, summary, body, gallery, seo, translation->{language, "slug": slug.current}}',
+    '*[_type == "activity" && language == $language && slug.current == $slug][0]{_id, title, "slug": slug.current, summary, body, occurrences[]{_key, title, startDate, endDate, location}, gallery, seo, translation->{language, "slug": slug.current}}',
     { language: locale, slug },
   );
 }

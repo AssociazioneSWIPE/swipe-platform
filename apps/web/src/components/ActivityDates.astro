@@ -1,0 +1,23 @@
+---
+import type { ActivityOccurrence } from '../lib/content';
+import type { Locale } from '../lib/i18n';
+import { orderedOccurrences, formatCalendarDate } from '../../../../packages/config/dates';
+const { occurrences = [], locale } = Astro.props as { occurrences?: ActivityOccurrence[]; locale: Locale };
+const dates = orderedOccurrences(occurrences);
+const format = (value: string) => formatCalendarDate(value, locale);
+---
+{dates.length > 0 && <section class="activity-dates" aria-label={locale === 'it' ? 'Date degli incontri' : 'Gathering dates'}>
+  <p class="eyebrow">{locale === 'it' ? 'Date degli incontri' : 'Gathering dates'}</p>
+  <ul>{dates.map((item) => <li>
+    <p class="gathering-title">{item.title}</p>
+    <p><time datetime={item.startDate}>{format(item.startDate)}</time>{item.endDate && item.endDate !== item.startDate && <> – <time datetime={item.endDate}>{format(item.endDate)}</time></>}</p>
+    {item.location && <p class="gathering-location">{item.location}</p>}
+  </li>)}</ul>
+</section>}
+<style>
+  .activity-dates { margin-block: 2rem; }
+  .activity-dates ul { margin-top: .75rem; display: grid; gap: 1rem; }
+  .activity-dates li { border-left: 3px solid var(--color-rose); padding-left: 1rem; }
+  .activity-dates li p { margin: 0; line-height: 1.7; }
+  .gathering-title { font-weight: 600; } .gathering-location { font-size: .9rem; }
+</style>

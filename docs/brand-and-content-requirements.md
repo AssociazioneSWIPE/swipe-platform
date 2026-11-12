@@ -29,11 +29,13 @@ The source PDFs remain unchanged in the user's Downloads folder. This note recor
 | Guides repository | Structured records and archive; verified SW+S book image and landing-page link | Populate additional guide records with their actual covers |
 | Press repository | Editable landing page and structured archive | Collect verified articles/interviews/video links |
 | Podcasts repository | Editable landing page and structured archive | Supply the existing episode and its approved destination |
-| Events / activities | Category documents, detail pages, descriptions and photo galleries; not a calendar | Enter approved activity descriptions and photos |
+| Events / activities | Category documents, detail pages, descriptions, photo galleries and optional dated gatherings | Enter approved descriptions, dates and photos |
 | Research | Editable approach text and structured project list | Approve proposed volunteer-capacity copy and enter verified past projects |
 | Association/contact | Dedicated editable bilingual pages | Migrate approved association content and implement the contact endpoint |
 
 Sanity page destinations and navigation choices share `packages/config/routes.ts`. No live content was created or published by this increment. The hosted Studio needs redeploying before the extra destinations appear there. Existing page documents remain valid.
+
+User update: dated gatherings were requested before the next deployment. Each activity category can now contain editions with a required title/start date, an optional end date and an optional public location. Both index and detail pages show them. Dates are day-only, localised in Italian/English and sorted by start date descending; existing undated categories still work. This adds date information while retaining the category-based presentation rather than a calendar grid.
 
 ## Frontend delivery
 
