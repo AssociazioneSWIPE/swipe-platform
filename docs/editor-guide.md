@@ -35,7 +35,27 @@ Add navigation items, choose their destinations, and drag them into order. Desti
 
 Under **Italiano / English → Pages**, create Home, About, Manifesto, Support, Resources, Guides, Press, Podcasts, Activities, Research and Contact as needed. Choose the page destination, enter its title and introduction, and optionally add an image, formatted body and search metadata. Validation prevents a second page at the same destination in the same language.
 
-Redeploy the hosted Studio after this schema update to see the extra destinations. The added archive sections are editable landing pages at this stage; structured entries and activity-category pages are a later increment. For Guides, use the image field for the actual cover and link to the existing SW+S request landing page. For Research, add the approved volunteer-capacity explanation and verified project history.
+Redeploy the hosted Studio after schema updates to see the latest fields. The page editor controls the introduction of each section. Individual entries are managed in the collections below.
+
+## Guides, Press, Podcasts and Research projects
+
+Under each language, these collections have their own lists and creation templates. The template sets the language and section automatically.
+
+Enter the title, summary, verified original link and source/producer/partner credit. For guides, upload the actual cover and link to the request landing page; do not upload the book contents. For research projects a link is optional. Display order controls the list order, with smaller values first.
+
+Only published entries from the selected language and section appear in the corresponding Astro archive. No embedded player or third-party tracking script is loaded automatically. If Guides has no published entries, Astro displays the verified SW+S book image and its existing official landing-page link.
+
+## Activity categories
+
+Use **Activity categories** to create a page about a type of gathering, for example aperitivi. Add a title, slug, summary, formatted description and a photo gallery with approved credits and alternative text. The section is an archive of activities, not a calendar; no event date is required.
+
+Publishing creates an entry in the activities index and a detail URL such as `/it/events/aperitivi/` after the next website build. Create the English version separately and link translations in both directions. Without a linked translation, the language switch goes to the other language's activities index.
+
+## Current-site text recovery
+
+The Italian About and Manifesto pages have a local text snapshot of the current public site. A published Sanity page overrides that snapshot completely, including deliberately empty body text. These snapshots have not been imported into Sanity.
+
+English versions of these full texts still need editorial translation. The Research introduction uses proposed copy about volunteer capacity derived from the brief; publish a Research page in Sanity to replace it. Confirm actual past projects before adding them to the collection.
 
 The page title is its visible heading; search metadata can override the browser title and description. Existing introductory placeholder text remains visible until the corresponding page is published.
 

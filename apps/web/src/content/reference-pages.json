@@ -1,0 +1,726 @@
+{
+  "manifesto": {
+    "title": "Manifesto",
+    "sourceUrl": "https://associazioneswipe.it/cosa-facciamo/",
+    "language": "it",
+    "retrievedAt": "2026-11-12",
+    "body": [
+      {
+        "_key": "source-1",
+        "_type": "block",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "text-1",
+            "_type": "span",
+            "marks": [],
+            "text": "Mission Statement"
+          }
+        ]
+      },
+      {
+        "_key": "source-3",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "text-3",
+            "_type": "span",
+            "marks": [],
+            "text": "I nostri valori sono:"
+          }
+        ]
+      },
+      {
+        "_key": "source-5",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "text-5",
+            "_type": "span",
+            "marks": [],
+            "text": "Riconosciamo che qualsiasi forma di lavoro sessuale è lavoro e crediamo che decriminalizzazione sia l’unica strada possibile per il pieno riconoscimento dei nostri diritti."
+          }
+        ]
+      },
+      {
+        "_key": "source-7",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "text-7",
+            "_type": "span",
+            "marks": [],
+            "text": "Per questo crediamo che lə sex worker saranno più sicurə e in grado di affermare i propri diritti lavorativi e umani quando le leggi e regolamentazioni punitive relative al comprare, vendere ed organizzare lo scambio di servizi sessuali saranno rimosse."
+          }
+        ]
+      },
+      {
+        "_key": "source-9",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "text-9",
+            "_type": "span",
+            "marks": [],
+            "text": "Supportiamo i diritti deə lavoratorə sessuali: il lavoro sessuale è lavoro."
+          }
+        ]
+      },
+      {
+        "_key": "source-11",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "text-11",
+            "_type": "span",
+            "marks": [],
+            "text": "Attualmente, chi fa sex work ha pochissimi poteri nel mercato sessuale per poter rivendicare diritti lavorativi e migliorare le proprie condizioni lavorative. Crediamo che cooperando possiamo ottenere i miglioramenti nella sicurezza e nelle condizioni lavorative che il movimento internazionale deə lavoratorə ha ottenuto in altre industrie."
+          }
+        ]
+      },
+      {
+        "_key": "source-13",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "text-13",
+            "_type": "span",
+            "marks": [],
+            "text": "Siamo profondamente consapevoli che per molte persone l’ingresso nell’industria del lavoro sessuale è motivato da necessità economiche e diseguaglianze sociali. Siamo noi quelle persone, ne abbiamo esperienza diretta."
+          }
+        ]
+      },
+      {
+        "_key": "source-15",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "text-15",
+            "_type": "span",
+            "marks": [],
+            "text": "Per moltə di noi il sex work è (o è stato) una strategia di sopravvivenza che ci ha dato i mezzi per resistere a situazioni avverse. Siamo persone piene di risorse, resilienti e consapevoli, rifiutiamo la romanticizzazione del nostro lavoro ed affermiamo che nessunə ha il diritto di etichettarci come vittime ed utilizzare le nostre stesse esperienze per zittirci."
+          }
+        ]
+      },
+      {
+        "_key": "source-17",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "text-17",
+            "_type": "span",
+            "marks": [],
+            "text": "Riconosciamo la capacità di ognunə di autodeterminare liberamente le proprie scelte e crediamo nell’importanza di combattere qualsiasi forma di stigma."
+          }
+        ]
+      },
+      {
+        "_key": "source-19",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "text-19",
+            "_type": "span",
+            "marks": [],
+            "text": "Lo stigma assume forme concrete che agiscono prepotentemente sulle nostre vite: sulle scelte lavorative, finanziarie, relazionali e persino sulla percezione che abbiamo di noi stessə, favorendo l’esistenza della “mignottarchia”: la gerarchia tra sex worker basata sul tipo di prestazione offerta, sul contesto, sulle motivazioni e sulle necessità. In essa, oltre allo stigma interiorizzato, riconosciamo l’ossequio al potere di chi ha più denaro, l’idea della rispettabilità inversamente proporzionale alla “promiscuità” sessuale, e le discriminazioni basate su molteplici assi identitarie tra cui la classe sociale, il genere, la razza, la (dis)abilità"
+          }
+        ]
+      },
+      {
+        "_key": "source-21",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "text-21",
+            "_type": "span",
+            "marks": [],
+            "text": "In linea con la maggioranza dei movimenti internazionali di sex worker, rivendichiamo l’uso di termini, quali puttana, prostituta, mignotta ecc."
+          }
+        ]
+      },
+      {
+        "_key": "source-23",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "text-23",
+            "_type": "span",
+            "marks": [],
+            "text": "Nel corso della storia queste parole sono state utilizzati per offenderci e umiliarci. Crediamo nella strategia politica di riappropriarci e risignificare questi termini."
+          }
+        ]
+      },
+      {
+        "_key": "source-25",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "text-25",
+            "_type": "span",
+            "marks": [],
+            "text": "Siamo dalla parte di chi migra. Moltə di noi sono migranti. Crediamo che ogni essere umano debba avere il diritto di spostarsi, viaggiare e attraversare i confini liberamente."
+          }
+        ]
+      },
+      {
+        "_key": "source-27",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "text-27",
+            "_type": "span",
+            "marks": [],
+            "text": "La xenofobia dilagante ha creato una situazione in cui le persone migranti hanno più probabilità di ritrovarsi ad esercitare sex work a causa delle disuguaglianze sociali ed economiche; e sono inoltre maggiormente suscettibili di subire violenza all’interno del sex work, soprattutto da parte dello Stato."
+          }
+        ]
+      },
+      {
+        "_key": "source-29",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "text-29",
+            "_type": "span",
+            "marks": [],
+            "text": "Siamo femministə e chiediamo che le associazioni femministe ascoltino le organizzazioni di sex worker così che si possa lavorare insieme allo sradicamento della violenza di genere."
+          }
+        ]
+      },
+      {
+        "_key": "source-31",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "text-31",
+            "_type": "span",
+            "marks": [],
+            "text": "Riconosciamo che il lavoro sessuale è svolto principalmente da donne e persone con identità non-binarie, in quanto in una società in cui gli uomini hanno la maggior parte del potere e delle risorse, il sex work si configura come la scelta migliore tra opzioni limitate e/o uno strumento di sopravvivenza. Questo è particolarmente vero per le donne che vivono più forme di marginalizzazione, come le donne razzializzate, le donne trans, le donne con disabilità, le madri single, le donne della classe lavoratrice. Criminalizzare il sex work marginalizza ancor di più chi ha opzioni limitate, e non fa che aumentare la povertà e la violenza."
+          }
+        ]
+      },
+      {
+        "_key": "source-33",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "text-33",
+            "_type": "span",
+            "marks": [],
+            "text": "Sosteniamo i diritti di tutte le persone trans e non-binarie e lottiamo unitə quindi contro ogni forma di transfobia."
+          }
+        ]
+      },
+      {
+        "_key": "source-35",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "text-35",
+            "_type": "span",
+            "marks": [],
+            "text": "Viviamo in un contesto altamente transfobico e trans-escludente, che ancora oggi offre opportunità lavorative limitate alle persone trans, le quali spessotrovano nel lavoro sessuale l’unica via possibile."
+          }
+        ]
+      },
+      {
+        "_key": "source-37",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "text-37",
+            "_type": "span",
+            "marks": [],
+            "text": "Supportiamo la lotta per la decriminalizzazione dell’uso di sostanze e le politiche di intervento di riduzione del danno."
+          }
+        ]
+      },
+      {
+        "_key": "source-39",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "text-39",
+            "_type": "span",
+            "marks": [],
+            "text": "Lə sex worker che fanno uso di sostanze stupefacenti soffrono un duplice stigma, in quanto ridotte a stereotipi e private della loro capacità di decidereautonomamente."
+          }
+        ]
+      },
+      {
+        "_key": "source-41",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "text-41",
+            "_type": "span",
+            "marks": [],
+            "text": "Ci riconosciamo nella lotta allo stigma e l’esclusione sociale nei confronti delle persone sieropositive, e per chi è sieropositivo e coinvolto nel mercato sessuale, lo stigma è doppio."
+          }
+        ]
+      },
+      {
+        "_key": "source-43",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "text-43",
+            "_type": "span",
+            "marks": [],
+            "text": "Lə sex worker sieropositivə sono parte integrante del nostro movimento e non ci distanzieremo mai da loro per ottenere maggiore rispettabilità."
+          }
+        ]
+      }
+    ]
+  },
+  "about": {
+    "title": "Chi siamo",
+    "sourceUrl": "https://associazioneswipe.it/chi-siamo/",
+    "language": "it",
+    "retrievedAt": "2026-11-12",
+    "body": [
+      {
+        "_key": "source-1",
+        "_type": "block",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "text-1",
+            "_type": "span",
+            "marks": [],
+            "text": "Siamo SWIPE"
+          }
+        ]
+      },
+      {
+        "_key": "source-2",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "text-2",
+            "_type": "span",
+            "marks": [],
+            "text": "Siamo qui per combattere lo stigma attraverso il mutuo aiuto, lo scambio di risorse e l’informazione. Siamo qui per raccontare chi siamo e cosa vogliamo."
+          }
+        ]
+      },
+      {
+        "_key": "source-3",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "text-3",
+            "_type": "span",
+            "marks": [],
+            "text": "Siamo un’associazione di sex worker e alleatə, creata per supportare e sostenere i diritti delle persone che fanno sex work e per promuovere una cultura inclusiva, non giudicante e destigmatizzante."
+          }
+        ]
+      },
+      {
+        "_key": "source-4",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "text-4",
+            "_type": "span",
+            "marks": [],
+            "text": "Siamo SWIPE, una freccia in direzione del cambiamento."
+          }
+        ]
+      },
+      {
+        "_key": "source-6",
+        "_type": "block",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "text-6",
+            "_type": "span",
+            "marks": [],
+            "text": "SWIPE"
+          }
+        ]
+      },
+      {
+        "_key": "source-7",
+        "_type": "block",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "text-7",
+            "_type": "span",
+            "marks": [],
+            "text": "sex worker intersectional peer education"
+          }
+        ]
+      },
+      {
+        "_key": "source-9",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "text-9",
+            "_type": "span",
+            "marks": [],
+            "text": "Si riferisce a qualsiasi tipo di attività che prevede da un lato un servizio sessuale, dall’altro una retribuzione economica. Si tratta di un termine ombrello che racchiude molteplici tipologie di lavori sessuali."
+          }
+        ]
+      },
+      {
+        "_key": "source-11",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "text-11",
+            "_type": "span",
+            "marks": [],
+            "text": "Ci identifichiamo nel femminismo intersezionale, combattiamo attivamente contro tutte le discriminazioni e violenze basate sull’identità di genere, l’orientamento sessuale, la razza, la religione, la classe sociale, la (dis)abilità, la forma fisica, lo status migratorio."
+          }
+        ]
+      },
+      {
+        "_key": "source-13",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "text-13",
+            "_type": "span",
+            "marks": [],
+            "text": "La “peer education” è una strategia educativa che si basa su trasmissione, scambio e condivisione di informazioni, valori ed esperienze tra persone che appartengono allo stessogruppo sociale."
+          }
+        ]
+      },
+      {
+        "_key": "source-15",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "text-15",
+            "_type": "span",
+            "marks": [],
+            "text": "Siamo escort, dominatorə, cammer, venditorə di mutandine, street worker, operatorə di telefonate erotiche, adult performer, accompagnatorə, creatorə di contenuti erotici. Siamo donne, queer, trans, uomini, disabili, neurodiversə, migranti:"
+          }
+        ]
+      },
+      {
+        "_key": "source-16",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "text-16",
+            "_type": "span",
+            "marks": [],
+            "text": "il trans-femminismo intersezionale ci unisce."
+          }
+        ]
+      },
+      {
+        "_key": "source-17",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "text-17",
+            "_type": "span",
+            "marks": [],
+            "text": "Conosci sicuramente almeno una di noi, anche se non lo sai. Siamo accanto a te sull’autobus, in fila alla posta, nell’appartamento accanto o nella folla urlante di una manifestazione."
+          }
+        ]
+      },
+      {
+        "_key": "source-19",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "text-19",
+            "_type": "span",
+            "marks": [],
+            "text": "I nostri obiettivi:"
+          }
+        ]
+      },
+      {
+        "_key": "source-22",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "text-22",
+            "_type": "span",
+            "marks": [],
+            "text": "Promuovere la solidarietà e la cooperazione tra sex worker, con particolare riguardo al contesto italiano."
+          }
+        ]
+      },
+      {
+        "_key": "source-24",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "text-24",
+            "_type": "span",
+            "marks": [],
+            "text": "La situazione legislativa e la conseguente applicazione giudiziaria – per cui la cooperazione tra sex worker è perseguibile – hanno ostacolato la condivisione di informazioni e la formazione di una comunità, privandoci di una componente essenziale della vita lavorativa ed associativa, isolandoci, alienandoci ed alimentando la diffidenza e la mignottarchia*."
+          }
+        ]
+      },
+      {
+        "_key": "source-25",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "text-25",
+            "_type": "span",
+            "marks": [],
+            "text": "(*Whorearchy – gerarchia interna ed esterna nell’industria del sesso che rende alcuni lavori più più stigmatizzanti di altri e altri più accettabili)."
+          }
+        ]
+      },
+      {
+        "_key": "source-27",
+        "_type": "block",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "text-27",
+            "_type": "span",
+            "marks": [],
+            "text": "2."
+          }
+        ]
+      },
+      {
+        "_key": "source-28",
+        "_type": "block",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "text-28",
+            "_type": "span",
+            "marks": [],
+            "text": "Rivendicare e sostenere i diritti"
+          }
+        ]
+      },
+      {
+        "_key": "source-29",
+        "_type": "block",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "text-29",
+            "_type": "span",
+            "marks": [],
+            "text": "di chi fa sex work."
+          }
+        ]
+      },
+      {
+        "_key": "source-31",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "text-31",
+            "_type": "span",
+            "marks": [],
+            "text": "Rivendicare e sostenere i diritti di chi fa sex work in termini di salute e sicurezza fisica, finanziaria, abitativa, lavorativa, genitoriale, mentale e sessuale."
+          }
+        ]
+      },
+      {
+        "_key": "source-32",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "text-32",
+            "_type": "span",
+            "marks": [],
+            "text": "Il lavoro sessuale è lavoro, e va riconosciuto come tale."
+          }
+        ]
+      },
+      {
+        "_key": "source-34",
+        "_type": "block",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "text-34",
+            "_type": "span",
+            "marks": [],
+            "text": "3."
+          }
+        ]
+      },
+      {
+        "_key": "source-35",
+        "_type": "block",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "text-35",
+            "_type": "span",
+            "marks": [],
+            "text": "Gettare le basi culturali, all’interno e all’esterno dell’associazione, per lavorare a una proposta di legge sulla decriminalizzazione del lavoro sessuale."
+          }
+        ]
+      },
+      {
+        "_key": "source-37",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "text-37",
+            "_type": "span",
+            "marks": [],
+            "text": "Attraverso momenti di formazione e tavoli di confronto, vogliamo gettare le basi culturali all’interno e all’esterno dell’associazione, per produrre una proposta di legge basata sulla decriminalizzazione del lavoro sessuale."
+          }
+        ]
+      },
+      {
+        "_key": "source-39",
+        "_type": "block",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "text-39",
+            "_type": "span",
+            "marks": [],
+            "text": "4."
+          }
+        ]
+      },
+      {
+        "_key": "source-40",
+        "_type": "block",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "text-40",
+            "_type": "span",
+            "marks": [],
+            "text": "Combattere lo stigma in tutte le sue forme:"
+          }
+        ]
+      },
+      {
+        "_key": "source-42",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "text-42",
+            "_type": "span",
+            "marks": [],
+            "text": "Dallo stigma interiorizzato a quello sociale, passando per quello istituzionale. Crediamo nella solidarietà tra sex worker e nell’(in)formazione come mezzo di destigmatizzazione e cambiamento."
+          }
+        ]
+      }
+    ]
+  }
+}

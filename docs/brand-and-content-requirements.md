@@ -26,11 +26,11 @@ The source PDFs remain unchanged in the user's Downloads folder. This note recor
 | Requirement | Implemented in this increment | Remaining editorial/product work |
 | --- | --- | --- |
 | Italian / English access | Localised navigation, fixed section routes and language switching | Review proposed English copy and migrate approved translations |
-| Guides repository | Guides destination and SW+S landing-page link; page image can hold its real cover | Supply the actual cover; add structured records for multiple guides; show cover and request link without reproducing the book |
-| Press repository | Dedicated editable bilingual page | Collect published articles/interviews/video links; structured archive records |
-| Podcasts repository | Dedicated editable bilingual page | Supply the existing episode and its approved destination; structured archive records |
-| Events / activities | Dedicated editable bilingual section and homepage entry | Category pages with descriptions/photos (e.g. aperitivi); this is an activity archive, not a calendar |
-| Research | Dedicated editable bilingual page and homepage entry | Approve collaboration approach, volunteer capacity/limits, and real past research projects |
+| Guides repository | Structured records and archive; verified SW+S book image and landing-page link | Populate additional guide records with their actual covers |
+| Press repository | Editable landing page and structured archive | Collect verified articles/interviews/video links |
+| Podcasts repository | Editable landing page and structured archive | Supply the existing episode and its approved destination |
+| Events / activities | Category documents, detail pages, descriptions and photo galleries; not a calendar | Enter approved activity descriptions and photos |
+| Research | Editable approach text and structured project list | Approve proposed volunteer-capacity copy and enter verified past projects |
 | Association/contact | Dedicated editable bilingual pages | Migrate approved association content and implement the contact endpoint |
 
 Sanity page destinations and navigation choices share `packages/config/routes.ts`. No live content was created or published by this increment. The hosted Studio needs redeploying before the extra destinations appear there. Existing page documents remain valid.

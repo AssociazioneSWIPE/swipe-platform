@@ -1,0 +1,35 @@
+---
+import EditorialImage from './EditorialImage.astro';
+import { externalUrl } from '../lib/links';
+import type { ArchiveKind, Resource } from '../lib/content';
+import type { Locale } from '../lib/i18n';
+import { guideUrl } from '../lib/site';
+const { resources, kind, locale } = Astro.props as { resources: Resource[]; kind: ArchiveKind; locale: Locale };
+const action = kind === 'guides'
+  ? (locale === 'it' ? 'Scopri la guida e richiedi una copia' : 'Discover the guide and request a copy')
+  : (locale === 'it' ? 'Vai alla fonte originale' : 'Visit the original source');
+---
+{resources.length > 0 ? <div class="archive">
+  {resources.map((item) => {
+    const href = externalUrl(item.sourceUrl);
+    return <article class:list={['resource', { guide: kind === 'guides' }]}>
+      {item.image && <EditorialImage value={item.image} width={800} />}
+      <div>{item.source && <p class="eyebrow">{item.source}</p>}<h2>{item.title}</h2><p>{item.summary}</p>{href && <a class="button" href={href}>{action} <span aria-hidden="true">↗</span></a>}</div>
+    </article>;
+  })}
+</div> : kind === 'guides' ? <article class="resource guide">
+  <img src="/brand/sw-plus-s-book.jpg" alt={locale === 'it' ? 'Il libro SW+S — Sex Work Più Sicuro' : 'The SW+S — Sex Work Più Sicuro book'} width="960" height="1050" loading="lazy" />
+  <div><p class="eyebrow">SWIPE / SW+S</p><h2>Sex Work Più Sicuro</h2><p>{locale === 'it' ? 'Una guida scritta da sex worker, per sex worker: informazioni e consigli su diritti, sicurezza e benessere. Visita il sito dedicato per conoscere il progetto e richiedere il libro.' : 'A guide written by sex workers, for sex workers: information and advice on rights, safety and wellbeing. Visit the dedicated website to learn about the project and request the book.'}</p><a class="button" href={guideUrl}>{action} <span aria-hidden="true">↗</span></a></div>
+</article> : <p class="archive-empty">{locale === 'it' ? 'Questa raccolta si sta preparando. Torna a trovarci.' : 'This collection is being prepared. Check back soon.'}</p>}
+<style>
+  .archive { display: grid; gap: 3rem; margin-top: 2rem; }
+  .resource { border-top: 1px solid; padding-top: 2rem; }
+  .resource h2 { font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.25; margin: 1rem 0; }
+  .resource > div > p:not(.eyebrow) { line-height: 1.8; margin-bottom: 1.5rem; }
+  .guide { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr); gap: 3rem; align-items: start; }
+  .guide > img { width: 100%; height: auto; }
+  .guide :global(figure) { margin-block: 0; }
+  .archive-empty { padding-block: 2rem; line-height: 1.8; }
+  @media (max-width: 650px) { .guide { grid-template-columns: 1fr; gap: 1.5rem; } .guide > img { max-width: 360px; } }
+</style>
+

@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import RichText from '../../../components/RichText.astro';
+import EditorialImage from '../../../components/EditorialImage.astro';
+import { getActivities, getActivity } from '../../../lib/content';
+import { locales, isLocale } from '../../../lib/i18n';
+import { sections } from '../../../lib/site';
+export async function getStaticPaths() {
+  return (await Promise.all(locales.map(async (locale) =>
+    (await getActivities(locale)).map((activity) => ({ params: { locale, slug: activity.slug } })),
+  ))).flat();
+}
+const { locale: routeLocale, slug } = Astro.params;
+if (!isLocale(routeLocale) || !slug) return new Response('Not found', { status: 404 });
+const locale = routeLocale;
+const activity = await getActivity(locale, slug);
+if (!activity) return new Response('Not found', { status: 404 });
+const otherLanguage = locale === 'it' ? 'en' : 'it';
+const alternatePath = activity.translation?.slug && activity.translation.language === otherLanguage
+  ? `/${otherLanguage}/events/${activity.translation.slug}/` : `/${otherLanguage}/events/`;
+---
+<BaseLayout locale={locale} title={activity.seo?.title || activity.title} description={activity.seo?.description || activity.summary} alternatePath={alternatePath}>
+  <section class="activity-heading"><div class="wrap"><a href={`/${locale}/events/`}>← {sections[locale].events[0]}</a><h1>{activity.title}</h1><p class="editorial">{activity.summary}</p></div></section>
+  <section class="section-space"><div class="wrap activity-body"><RichText value={activity.body} />
+    {activity.gallery && activity.gallery.length > 0 && <div class="activity-gallery">{activity.gallery.map((photo) => <EditorialImage value={photo} width={1000} />)}</div>}
+  </div></section>
+</BaseLayout>
+<style>
+  .activity-heading { background: var(--color-rose); padding-block: clamp(3rem, 6vw, 6rem); }
+  .activity-heading a { text-decoration: underline; text-underline-offset: .3em; }
+  h1 { font-size: clamp(2.5rem, 6vw, 5rem); line-height: 1.1; margin-block: 2rem; }
+  .activity-heading p { max-width: 760px; font-size: 1.4rem; line-height: 1.6; }
+  .activity-body { max-width: 1000px; }
+  .activity-gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; margin-top: 3rem; align-items: start; }
+  @media (max-width: 650px) { .activity-gallery { grid-template-columns: 1fr; } }
+</style>
+

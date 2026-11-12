@@ -4,4 +4,6 @@ import { author } from './author';
 import { category } from './category';
 import { siteSettings } from './siteSettings';
 import { editorialImage, richText, seo } from './shared';
-export const schemaTypes = [article, page, author, category, siteSettings, editorialImage, richText, seo];
+import { resource } from './resource';
+import { activity } from './activity';
+export const schemaTypes = [article, page, author, category, siteSettings, resource, activity, editorialImage, richText, seo];

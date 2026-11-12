@@ -29,6 +29,17 @@ export type Section = keyof typeof sections.it;
 export const resourceSections = ['guides', 'press', 'podcasts'] as const;
 export const guideUrl = 'https://safersexwork.associazioneswipe.it/';
 export const instagramUrl = 'https://www.instagram.com/associazione.swipe/';
+// Proposed editorial copy based on the supplied research brief; review before launch.
+export const researchApproach = {
+  it: [
+    'Le nostre attività si basano sul lavoro volontario. Per ogni proposta di ricerca valutiamo gli obiettivi, il coinvolgimento delle persone sex worker e le risorse che possiamo mettere a disposizione.',
+    'Cerchiamo collaborazioni rispettose delle nostre esperienze e dei nostri tempi. La disponibilità dipende dagli impegni dell’associazione: non possiamo garantire di partecipare a ogni progetto.',
+  ],
+  en: [
+    'Our activities rely on volunteer work. For each research proposal, we consider its aims, the involvement of sex workers and the resources we can contribute.',
+    'We seek collaborations that respect our experience and time. Our availability depends on the association’s commitments: we cannot guarantee participation in every project.',
+  ],
+} as const;
 export const homeCopy: Record<Locale, { eyebrow: string; title: string; intro: string; about: string; resources: string; statement: string; values: string; resourceIntro: string; research: string; researchIntro: string }> = {
   it: {
     eyebrow: 'Sex Worker Intersectional Peer Education',

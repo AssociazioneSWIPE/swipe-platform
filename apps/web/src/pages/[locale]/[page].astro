@@ -2,10 +2,11 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import RichText from '../../components/RichText.astro';
 import EditorialImage from '../../components/EditorialImage.astro';
-import { getPage } from '../../lib/content';
+import ResourceArchive from '../../components/ResourceArchive.astro';
+import { getPage, getResources, getActivities, type ArchiveKind } from '../../lib/content';
 import { isLocale, locales } from '../../lib/i18n';
-import { sections, resourceSections, guideUrl, instagramUrl, type Section } from '../../lib/site';
-import { pageRoutes } from '../../../../../packages/config/routes';
+import { sections, resourceSections, instagramUrl, researchApproach, type Section } from '../../lib/site';
+import { pageRoutes, archiveRoutes } from '../../../../../packages/config/routes';
 export function getStaticPaths() {
   return locales.flatMap((locale) => pageRoutes.filter((page) => page !== 'home').map((page) => ({ params: { locale, page } })));
 }
@@ -15,16 +16,20 @@ const locale = routeLocale;
 const route = page as Section;
 const pageContent = await getPage(locale, route);
 const [title, intro] = sections[locale][route];
+const isArchive = archiveRoutes.includes(route as ArchiveKind);
+const resources = isArchive ? await getResources(locale, route as ArchiveKind) : [];
+const activities = route === 'events' ? await getActivities(locale) : [];
 ---
 <BaseLayout locale={locale} title={pageContent?.seo?.title || pageContent?.title || title} description={pageContent?.seo?.description || pageContent?.intro || intro} alternatePath={`/${locale === 'it' ? 'en' : 'it'}/${page}/`}>
   <section class="page-heading"><div class="wrap"><p class="eyebrow">SWIPE / {title}</p><h1>{pageContent?.title || title}</h1><p class="editorial page-intro">{pageContent?.intro || intro}</p></div></section>
   <section class="section-space"><div class="wrap page-body">
     <EditorialImage value={pageContent?.image} /><RichText value={pageContent?.body} />
+    {route === 'research' && !pageContent?.body?.length && <div class="research-approach">{researchApproach[locale].map((paragraph) => <p>{paragraph}</p>)}<a class="button" href={`/${locale}/contact/`}>{locale === 'it' ? 'Parliamone' : 'Let’s talk'} <span aria-hidden="true">↗</span></a></div>}
     {route === 'resources' && <div class="resource-list">{resourceSections.map((section) => <a href={`/${locale}/${section}/`}><h2>{sections[locale][section][0]} <span aria-hidden="true">↗</span></h2><p>{sections[locale][section][1]}</p></a>)}</div>}
-    {route === 'guides' && <div class="guide-entry"><p class="eyebrow">SW+S</p><h2>Sex Work Più Sicuro</h2><p>{locale === 'it' ? 'Scopri la guida e come richiedere una copia.' : 'Discover the guide and how to request a copy.'}</p><a class="button" href={guideUrl}>{locale === 'it' ? 'Vai alla pagina della guida' : 'Visit the guide’s website'} <span aria-hidden="true">↗</span></a></div>}
+    {isArchive && <ResourceArchive resources={resources} kind={route as ArchiveKind} locale={locale} />}
+    {route === 'events' && <div class="resource-list">{activities.length ? activities.map((activity) => <article><h2><a href={`/${locale}/events/${activity.slug}/`}>{activity.title} <span aria-hidden="true">↗</span></a></h2><p>{activity.summary}</p><EditorialImage value={activity.gallery?.[0]} width={800} /></article>) : <p class="empty-note">{locale === 'it' ? 'Le nostre attività saranno raccontate qui, con foto e storie dalla comunità.' : 'Our activities will be shared here, with photos and stories from the community.'}</p>}</div>}
     {route === 'support' && <a class="button button-yellow" href="https://www.paypal.com/donate/?hosted_button_id=4WJG759DXNHS4">{locale === 'it' ? 'Fai una donazione' : 'Make a donation'} <span aria-hidden="true">↗</span></a>}
     {route === 'contact' && <a class="button" href={instagramUrl}>Instagram <span aria-hidden="true">↗</span></a>}
-    {!pageContent?.body?.length && ['press', 'podcasts', 'events', 'research'].includes(route) && <p class="empty-note">{locale === 'it' ? 'Questa sezione si sta preparando. Torna a trovarci.' : 'This section is being prepared. Check back soon.'}</p>}
   </div></section>
 </BaseLayout>
 <style>
@@ -37,4 +42,5 @@ const [title, intro] = sections[locale][route];
   h2 { font-size: 1.8rem; margin-bottom: 1rem; } .resource-list > a:hover h2 { text-decoration: underline; }
   .guide-entry p, .resource-list p { line-height: 1.7; margin-bottom: 1.5rem; }
   .empty-note { font-size: 1rem; line-height: 1.7; } .guide-entry { border-top: 1px solid; padding-top: 2rem; }
+  .research-approach p { line-height: 1.8; margin-bottom: 1.5rem; }
 </style>

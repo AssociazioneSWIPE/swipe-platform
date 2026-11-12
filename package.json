@@ -9,6 +9,7 @@
     "dev": "pnpm --filter @swipe/web dev",
     "studio": "pnpm --filter @swipe/studio dev",
     "studio:login": "pnpm --filter @swipe/studio sanity login",
-    "studio:deploy": "pnpm --filter @swipe/studio sanity deploy --schema-required"
+    "studio:deploy": "pnpm --filter @swipe/studio sanity deploy --schema-required",
+    "test:content": "node scripts/verify-archive-queries.cjs"
   }
 }

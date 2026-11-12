@@ -1,5 +1,8 @@
 import { createClient } from '@sanity/client';
 import type { Locale } from './i18n';
+import type { archiveRoutes } from '../../../../packages/config/routes';
+import referencePages from '../content/reference-pages.json';
+export type ArchiveKind = (typeof archiveRoutes)[number];
 
 export interface PortableTextBlock {
   _key?: string;
@@ -41,6 +44,28 @@ export interface SiteSettings {
   navigation?: Array<{ _key: string; label: string; route: string }>;
 }
 
+export interface Resource {
+  _id: string;
+  kind: ArchiveKind;
+  title: string;
+  summary: string;
+  source?: string;
+  sourceUrl?: string;
+  image?: EditorialImage;
+  publicationDate?: string;
+}
+
+export interface Activity {
+  _id: string;
+  title: string;
+  slug: string;
+  summary: string;
+  body?: PortableTextBlock[];
+  gallery?: EditorialImage[];
+  translation?: { language: Locale; slug: string };
+  seo?: { title?: string; description?: string };
+}
+
 const fallbackArticles: Record<Locale, Article[]> = {
   it: [
     { slug: 'diritti-e-autodeterminazione', title: 'Diritti e autodeterminazione', excerpt: 'Una piattaforma per ascoltare, condividere e cambiare.', publishedAt: '2026-01-01', body: [{ _type: 'block', children: [{ _type: 'span', text: 'SWIPE mette al centro le voci, l’esperienza e l’autodeterminazione delle persone sex worker.' }] }] },
@@ -63,10 +88,36 @@ async function fetchContent<T>(query: string, params: Record<string, string>): P
 }
 
 export async function getPage(locale: Locale, route: string): Promise<PageContent | null> {
-  if (!client) return null;
-  return fetchContent<PageContent | null>(
+  const source = locale === 'it' && route in referencePages
+    ? referencePages[route as keyof typeof referencePages] as PageContent : null;
+  if (!client) return source;
+  return (await fetchContent<PageContent | null>(
     '*[_type == "page" && language == $language && route == $route][0]{title, intro, image, body, seo}',
     { language: locale, route },
+  )) || source;
+}
+
+export async function getResources(locale: Locale, kind: ArchiveKind): Promise<Resource[]> {
+  if (!client) return [];
+  return fetchContent<Resource[]>(
+    '*[_type == "resource" && language == $language && kind == $kind] | order(coalesce(displayOrder, 0) asc, title asc, _id asc){_id, kind, title, summary, source, sourceUrl, image, publicationDate}',
+    { language: locale, kind },
+  );
+}
+
+export async function getActivities(locale: Locale): Promise<Activity[]> {
+  if (!client) return [];
+  return fetchContent<Activity[]>(
+    '*[_type == "activity" && language == $language && defined(slug.current)] | order(title asc, _id asc){_id, title, "slug": slug.current, summary, "gallery": gallery[0...1]}',
+    { language: locale },
+  );
+}
+
+export async function getActivity(locale: Locale, slug: string): Promise<Activity | null> {
+  if (!client) return null;
+  return fetchContent<Activity | null>(
+    '*[_type == "activity" && language == $language && slug.current == $slug][0]{_id, title, "slug": slug.current, summary, body, gallery, seo, translation->{language, "slug": slug.current}}',
+    { language: locale, slug },
   );
 }
 
